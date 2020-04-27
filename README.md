@@ -3,8 +3,6 @@ This module provides vr live streaming server.
 using a 360 Live Streaming Camera such as insta 360, 
 you can watch live streaming from web browser with vr headset.
 
-# Description
-
 ```
 insta 360 --(rtmp)--> hls-server-360 --(hls)--> web browser
 ```
