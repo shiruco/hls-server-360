@@ -9,6 +9,12 @@ insta 360 --(rtmp)--> hls-server-360 --(hls)--> web browser
 
 # How to use
 
+### build client
+```shell
+cd client
+npm install
+npm run build
+```
 ### build docker image
 ```shell
 docker build -t hls-server .
