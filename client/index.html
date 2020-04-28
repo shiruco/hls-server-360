@@ -2,8 +2,6 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/4.0.3/babylon.js"></script>
     <style>
         html,
         body {
@@ -14,7 +12,7 @@
             padding: 0;
         }
 
-        #renderCanvas {
+        .canvas {
             width: 100%;
             height: 100%;
             touch-action: none;
@@ -23,84 +21,8 @@
   </head>
 
   <body>
-    <canvas id="renderCanvas"></canvas>
+    <canvas id="renderCanvas" class="canvas"></canvas>
     <video id="video"></video>
-    <script>
-        const canvas = document.getElementById('renderCanvas');
-        const engine = new BABYLON.Engine(canvas, true);
-
-        const createScene = function (videoElem) {
-            const scene = new BABYLON.Scene(engine);
-            const camera = new BABYLON.ArcRotateCamera('Camera', -1, 0, 1, new BABYLON.Vector3(0, 0, 0), scene);
-
-            camera.setTarget(BABYLON.Vector3.Zero());
-            camera.attachControl(canvas, true);
-
-            const light = new BABYLON.HemisphericLight('Light', new BABYLON.Vector3(0, 0, 0), scene);
-
-            const videoDome = new BABYLON.VideoDome(
-                'VideoDome',
-                videoElem,
-                {},
-                scene
-            );
-
-            return scene;
-
-        };
-
-        var videoElem = document.getElementById('video');
-
-        const scene = createScene(videoElem);
-
-        const playPauseVideoDome = () => {
-            const videoDome = scene.getNodeByName('VideoDome');
-            const video = videoDome.videoTexture.video;
-            video.paused ? video.play() : video.pause();
-            console.log(`video.paused ${video.paused}`)
-        }
-
-        scene.onKeyboardObservable.add(e => {
-            switch (e.event.type) {
-                case 'keydown':
-                    if (e.event.key === ' ') {
-                        playPauseVideoDome();
-                    }
-                    break;
-            }
-        })
-
-        const vrHelper = scene.createDefaultVRExperience();
-        vrHelper.enableInteractions();
-
-        vrHelper.onControllerMeshLoaded.add((webVRController) => {
-            var controllerMesh = webVRController.mesh;
-            webVRController.onTriggerStateChangedObservable.add(() => {
-              playPauseVideoDome();
-            });
-        });
-
-        engine.runRenderLoop(() => {
-            scene.render();
-        });
-
-        window.addEventListener('resize', function () {
-            engine.resize();
-        });
-
-        const playVideoDome = () => {
-            const videoDome = scene.getNodeByName('VideoDome')
-            videoDome.videoTexture.video.play()
-        }
-
-        if (Hls.isSupported()) {
-            const hls = new Hls({ autoStartLoad: true });
-            hls.loadSource('/live/stream.m3u8');
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, playVideoDome);
-            hls.startLoad();
-            console.log("1")
-        }
-    </script>
+    <script src="./dist/bundle.js"></script>
   </body>
 </html>

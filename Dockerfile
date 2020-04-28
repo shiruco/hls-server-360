@@ -44,7 +44,8 @@ RUN cd /tmp/build/nginx/${NGINX_VERSION} && \
 # copy nginx.conf
 COPY nginx/nginx.conf /etc/nginx/
 # copy client source
-COPY index.html /usr/local/nginx/html/index.html
+COPY client/index.html /usr/local/nginx/html/index.html
+ADD client/dist /usr/local/nginx/html/dist
 
 # expose rtmp port
 EXPOSE 1935
