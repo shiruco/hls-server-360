@@ -5,8 +5,8 @@ on:
       - develop
     paths:
       - client/src/**
-    tags:
-      - v*
+  release:
+    types: [published]
 
 defaults:
   run:
