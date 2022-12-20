@@ -24,3 +24,5 @@ jobs:
           echo "${{ github.ref_name }}"
           echo "${{ github.head_ref }}"
           echo "${{ github.base_ref }}"
+          echo "${{ github.ref }}"
+          echo "${GITHUB_REF#refs/heads/}"
