@@ -24,8 +24,17 @@ jobs:
       - name: Check sha
         run: |
           HEAD_REF=$(git rev-parse origin/master)
+          TAG_REF=$(git rev-parse "${GITHUB_REF#refs/heads/}")
 
           echo {$HEAD_REF}
+          echo {$TAG_REF}
+
+          if [ "$TAG_REF" = "$HEAD_REF" ]; then
+            echo "sha is OK"
+          else
+            echo "sha is NG"
+            exit 1
+          fi
       - name: test
         run: |
           echo "${{ github.event.base_ref }}"
