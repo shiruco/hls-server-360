@@ -15,27 +15,10 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Check sha
-        run: |
-          TAG=${GITHUB_REF#refs/heads/}
-          HEAD_REF=$(git rev-parse "origin/feature/add-github-actions")
-          TAG_REF=$(git rev-parse "$TAG")
-
-          echo {$HEAD_REF}
-          echo {$TAG_REF}
-
-          if [ "$TAG_REF" = "$HEAD_REF" ]; then
-            echo "sha is OK"
-          else
-            echo "sha is NG"
-            exit 1
-          fi
+      - name: before test
+        uses: ./.github/actions/validation
       - name: test
         run: |
           echo "${{ github.event.base_ref }}"
