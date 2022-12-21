@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: before test
+        uses: ./.github/actions/validation
       - name: test
         if:
         run: |

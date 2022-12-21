@@ -1,0 +1,17 @@
+name: "validation"
+description: |-
+  Validation
+
+runs:
+  steps:
+    - name: Check sha
+      run: |
+        HEAD_REF=$(git rev-parse "origin/feature/add-github-actions")
+        TAG_REF=$(git rev-parse "$GIT_TAG")
+
+        if [ "$TAG_REF" = "$HEAD_REF" ]; then
+          echo "sha is OK"
+        else
+          echo "sha is NG"
+          exit 1
+        fi
