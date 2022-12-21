@@ -9,6 +9,7 @@ runs:
       with:
         fetch-depth: 0
     - name: Check sha
+      shell: bash
       run: |
         TAG=${GITHUB_REF#refs/heads/}
         HEAD_REF=$(git rev-parse "origin/feature/add-github-actions")
