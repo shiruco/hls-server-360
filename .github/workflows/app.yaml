@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
       - name: Check sha
         run: |
-          HEAD_REF=$(git rev-parse "origin/master")
+          HEAD_REF=$(git rev-parse origin/master)
           TAG_REF=$(git rev-parse "$GIT_TAG")
 
           echo {$HEAD_REF}
