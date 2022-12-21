@@ -24,7 +24,7 @@ jobs:
       - name: Check sha
         run: |
           TAG=${GITHUB_REF#refs/heads/}
-          HEAD_REF=$(git rev-parse "origin/master")
+          HEAD_REF=$(git rev-parse "origin/feature/add-github-actions")
           TAG_REF=$(git rev-parse "$TAG")
 
           echo {$HEAD_REF}
