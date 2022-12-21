@@ -3,6 +3,7 @@ description: |-
   Validation
 
 runs:
+  using: composite
   steps:
     - name: Check sha
       shell: bash
