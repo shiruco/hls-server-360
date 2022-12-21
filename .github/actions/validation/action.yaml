@@ -8,7 +8,7 @@ runs:
     - name: Check sha
       shell: bash
       run: |
-        HEAD_REF=$(git rev-parse "origin/feature/add-github-actions")
+        HEAD_REF=$(git rev-parse "origin/master")
         TAG_REF=$(git rev-parse "$GIT_TAG")
 
         echo {$HEAD_REF}
