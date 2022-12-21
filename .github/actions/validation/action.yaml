@@ -9,15 +9,4 @@ runs:
     - name: Check sha
       shell: bash
       run: |
-        HEAD_REF=$(git rev-parse "origin/master")
         TAG_REF=$(git rev-parse "$GIT_TAG")
-
-        echo {$HEAD_REF}
-        echo {$TAG_REF}
-
-        if [ "$TAG_REF" = "$HEAD_REF" ]; then
-          echo "sha is OK"
-        else
-          echo "sha is NG"
-          exit 1
-        fi

@@ -28,3 +28,6 @@ jobs:
           echo "${{ github.ref }}"
           echo "${{ github }}"
           echo "${GITHUB_REF#refs/heads/}"
+
+          HEAD_REF=$(git rev-parse "origin/master")
+          echo "${HEAD_REF}"
