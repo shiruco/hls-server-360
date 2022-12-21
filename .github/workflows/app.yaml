@@ -20,7 +20,6 @@ jobs:
       - name: before test
         uses: ./.github/actions/validation
       - name: test
-        if:
         run: |
           echo "${{ github.event.base_ref }}"
           echo "${{ github.ref_name }}"

@@ -5,6 +5,7 @@ description: |-
 runs:
   steps:
     - name: Check sha
+      shell: bash
       run: |
         HEAD_REF=$(git rev-parse "origin/feature/add-github-actions")
         TAG_REF=$(git rev-parse "$GIT_TAG")
