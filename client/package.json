@@ -20,11 +20,11 @@
   "devDependencies": {
     "@types/hls.js": "^0.12.6",
     "@types/webpack": "^4.41.12",
-    "ts-loader": "^7.0.1",
+    "ts-loader": "^9.4.2",
     "ts-node": "^8.9.1",
     "typescript": "^3.8.3",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.2.1"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "dependencies": {
     "babylonjs": "^4.1.0",
